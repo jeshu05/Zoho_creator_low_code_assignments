@@ -1,0 +1,1193 @@
+/*
+ * Author       : jaiharish.d.2024.cse_raja332
+ * Generated on : 20-Oct-2026 19:49:08
+ * Version      : 1.0
+ */
+ application "FreshCheck"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+
+ 	forms
+	{
+		form Consumption_Log
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Food_Item
+			(
+				type = picklist	
+				displayname = "Food Item"
+				values  = Food_Items.ID
+    			displayformat = [Food_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Consumption_Date
+			(
+    			type = date
+				displayname = "Consumption Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Quantity_Consumed
+			(
+				type = decimal
+				displayname = "Quantity Consumed"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Meal_Type
+			(
+				type = picklist
+				displayname = "Meal Type"
+				maxchar = 100
+				values = {"Breakfast","Lunch","Dinner","Snack","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Notes
+			(
+    			type = textarea
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Food_Items
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Food_Name
+			(
+    			type = text
+				displayname = "Food Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Category
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Dairy","Fruit","Vegetable","Meat","Packaged","Bakery","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Brand
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Quantity_Purchased
+			(
+				type = decimal
+				displayname = "Quantity Purchased"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Quantity_Remaining
+			(
+				type = decimal
+				displayname = "Quantity Remaining"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Unit
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Pieces","g","kg","ml","L","Pack"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Purchase_Date
+			(
+    			type = date
+				displayname = "Purchase Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Expiry_Date
+			(
+    			type = date
+				displayname = "Expiry Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Unit_Price
+			(
+				displayname = "Unit Price"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Storage_Location
+			(
+				type = picklist
+				displayname = "Storage Location"
+				maxchar = 100
+				values = {"Refrigerator","Freezer","Pantry","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Expiry_Status
+			(
+				type = picklist
+				displayname = "Expiry Status"
+				maxchar = 100
+				values = {"Fresh","Expiring Soon","Expired","Consumed"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Notes
+			(
+    			type = textarea
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Food_Waste_Log
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Food_Item
+			(
+				type = picklist	
+				displayname = "Food Item"
+				values  = Food_Items.ID
+    			displayformat = [Food_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Waste_Date
+			(
+    			type = date
+				displayname = "Waste Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Quantity_Wasted
+			(
+				type = decimal
+				displayname = "Quantity Wasted"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Waste_Reason
+			(
+				type = picklist
+				displayname = "Waste Reason"
+				maxchar = 100
+				values = {"Expired","Spoiled","Leftover","Over-purchased","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Estimated_Loss
+			(
+				displayname = "Estimated Loss"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Notes
+			(
+    			type = textarea
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list Food_Items_Report
+		{
+			displayName = "Food_Items Report"
+			show all rows from Food_Items    
+			(
+				Food_Name as "Food Name"
+				Category
+				Brand
+				Quantity_Purchased as "Quantity Purchased"
+				Quantity_Remaining as "Quantity Remaining"
+				Unit
+				Purchase_Date as "Purchase Date"
+				Expiry_Date as "Expiry Date"
+				Unit_Price as "Unit Price"
+				Storage_Location as "Storage Location"
+				Expiry_Status as "Expiry Status"
+				Notes
+			)
+		}
+		list Expiry_Watchlist
+		{
+			displayName = "Expiry_Watchlist"
+			show all rows from Food_Items  [Expiry_Date in next 3 days && Expiry_Status != "Consumed"]  
+			(
+				Food_Name as "Food Name"
+				Category
+				Brand
+				Quantity_Purchased as "Quantity Purchased"
+				Quantity_Remaining as "Quantity Remaining"
+				Unit
+				Purchase_Date as "Purchase Date"
+				Expiry_Date as "Expiry Date"
+				Unit_Price as "Unit Price"
+				Storage_Location as "Storage Location"
+				Expiry_Status as "Expiry Status"
+				Notes
+			)
+		}
+		default list Consumption_Log_Report
+		{
+			displayName = "Consumption_Log Report"
+			show all rows from Consumption_Log    
+			(
+				Food_Item as "Food Item"
+				Consumption_Date as "Consumption Date"
+				Quantity_Consumed as "Quantity Consumed"
+				Meal_Type as "Meal Type"
+				Notes
+			)
+		}
+		default list Food_Waste_Log_Report
+		{
+			displayName = "Food_Waste_Log Report"
+			show all rows from Food_Waste_Log    
+			(
+				Food_Item as "Food Item"
+				Waste_Date as "Waste Date"
+				Quantity_Wasted as "Quantity Wasted"
+				Waste_Reason as "Waste Reason"
+				Estimated_Loss as "Estimated Loss"
+				Notes
+			)
+		}
+	}
+	pages
+	{
+		page FreshCheck_Dashboard
+		{
+			displayname = "FreshCheck_Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<panel elementName='Panel'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#2A70E7'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#FF4C2F'\n    borderWidth = '0px'\n\n\t  value = 'thisapp.Food_Items.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#333333'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#333333'\n    borderWidth = '0px'\n\n\t  value = 'Total Food Items'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart'\n\n\ttype = 'Column'\n\txtitle = 'Waste Reason'\n\tytitle = 'Total Quantity Wasted'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme1'\n\tlegendPos = 'center.top'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Food_Waste_Log'\n\txfield = 'Waste_Reason'\n\tyfields = 'sum:Quantity_Wasted'\n/>\n\n</column>\n</row><row>\n\t<column\n   \t\t width='34%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'Expiry_Watchlist'\n\t\n\t\tiszreport = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n/>\n</column><column\n   \t\t width='34%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#FF4C2F'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#FF4C2F'\n    borderWidth = '0px'\n\n\t  value = 'thisapp.Consumption_Log.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#333333'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#333333'\n    borderWidth = '0px'\n\n\t  value = 'Consumption Records'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='32%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#BC2AE7'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#FF4C2F'\n    borderWidth = '0px'\n\n\t  value = 'thisapp.Food_Waste_Log.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#333333'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#333333'\n    borderWidth = '0px'\n\n\t  value = 'Food Waste Records'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+	}
+
+
+
+
+		workflow
+		{
+		form
+		{
+			Update_Expiry_Status as "Update_Expiry_Status"
+			{
+				type =  form
+				form = Food_Items
+
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Quantity_Remaining <= 0)
+										{
+											input.Expiry_Status = "Consumed";
+										}
+										else if(input.Expiry_Date < zoho.currentdate)
+										{
+											input.Expiry_Status = "Expired";
+										}
+										else if(input.Expiry_Date <= zoho.currentdate.addDay(3))
+										{
+											input.Expiry_Status = "Expiring Soon";
+										}
+										else
+										{
+											input.Expiry_Status = "Fresh";
+										}
+						)
+					}
+				}
+
+			}
+			Update_Quantity_After_Con as "Update_Quantity_After_Consumption"
+			{
+				type =  form
+				form = Consumption_Log
+
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											foodRecord = Food_Items[ID == input.Food_Item];
+										if(foodRecord.count() > 0)
+										{
+											newQuantity = foodRecord.Quantity_Remaining - input.Quantity_Consumed;
+											if(newQuantity >= 0)
+											{
+												foodRecord.Quantity_Remaining=newQuantity;
+												if(newQuantity <= 0)
+												{
+													foodRecord.Expiry_Status="Consumed";
+												}
+												else if(foodRecord.Expiry_Date < zoho.currentdate)
+												{
+													foodRecord.Expiry_Status="Expired";
+												}
+												else if(foodRecord.Expiry_Date <= zoho.currentdate.addDay(3))
+												{
+													foodRecord.Expiry_Status="Expiring Soon";
+												}
+												else
+												{
+													foodRecord.Expiry_Status="Fresh";
+												}
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Validate_Waste_Entry as "Validate_Waste_Entry"
+			{
+				type =  form
+				form = Food_Waste_Log
+
+				record event = on add
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Quantity_Wasted <= 0)
+										{
+											alert "Quantity wasted must be greater than zero.";
+											cancel submit;
+										}
+										else if(input.Food_Item != null)
+										{
+											food_record = Food_Items[ID == input.Food_Item];
+											if(food_record.ID != null)
+											{
+												if(input.Quantity_Wasted > food_record.Quantity_Remaining)
+												{
+													alert "Quantity wasted cannot exceed the remaining quantity.";
+													cancel submit;
+												}
+												else
+												{
+													input.Estimated_Loss = input.Quantity_Wasted * food_record.Unit_Price;
+												}
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Update_Stock_After_Waste as "Update_Stock_After_Waste"
+			{
+				type =  form
+				form = Food_Waste_Log
+
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											food_record = Food_Items[ID == input.Food_Item];
+										if(food_record.ID != null)
+										{
+											remaining_qty = ifnull(food_record.Quantity_Remaining,0);
+											waste_qty = ifnull(input.Quantity_Wasted,0);
+											if(waste_qty > 0 && waste_qty <= remaining_qty)
+											{
+												food_record.Quantity_Remaining=remaining_qty - waste_qty;
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Validate_Consumption_Quan as "Validate_Consumption_Quantity"
+			{
+				type =  form
+				form = Consumption_Log
+
+				record event = on add
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Quantity_Consumed <= 0)
+										{
+											alert "Quantity consumed must be greater than zero.";
+											cancel submit;
+										}
+										if(input.Food_Item != null)
+										{
+											food_record = Food_Items[ID == input.Food_Item];
+											if(food_record.ID != null)
+											{
+												remaining_qty = ifnull(food_record.Quantity_Remaining,0);
+												if(input.Quantity_Consumed > remaining_qty)
+												{
+													alert "Quantity consumed cannot exceed the remaining stock.";
+													cancel submit;
+												}
+											}
+										}
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+	customize
+	{
+		icon
+		{
+			text = "FRE"
+			background color = "theme"
+			foreground color = "#ffffff"
+		}
+	}
+
+	web
+	{
+		forms
+		{
+			form Consumption_Log
+			{
+				label placement = left
+			}
+			form Food_Items
+			{
+				label placement = left
+			}
+			form Food_Waste_Log
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report Food_Items_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Food_Name as "Food Name"
+								Category
+								Brand
+								Quantity_Purchased as "Quantity Purchased"
+								Quantity_Remaining as "Quantity Remaining"
+								Unit
+								Purchase_Date as "Purchase Date"
+								Expiry_Date as "Expiry Date"
+								Storage_Location as "Storage Location"
+								Expiry_Status as "Expiry Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Food_Name as "Food Name"
+								Category
+								Brand
+								Quantity_Purchased as "Quantity Purchased"
+								Quantity_Remaining as "Quantity Remaining"
+								Unit
+								Purchase_Date as "Purchase Date"
+								Expiry_Date as "Expiry Date"
+								Unit_Price as "Unit Price"
+								Storage_Location as "Storage Location"
+								Expiry_Status as "Expiry Status"
+								Notes
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Expiry_Watchlist
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Food_Name as "Food Name"
+								Category
+								Quantity_Remaining as "Quantity Remaining"
+								Unit
+								Expiry_Date as "Expiry Date"
+								Storage_Location as "Storage Location"
+								Expiry_Status as "Expiry Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Food_Name as "Food Name"
+								Category
+								Brand
+								Quantity_Purchased as "Quantity Purchased"
+								Quantity_Remaining as "Quantity Remaining"
+								Unit
+								Purchase_Date as "Purchase Date"
+								Expiry_Date as "Expiry Date"
+								Unit_Price as "Unit Price"
+								Storage_Location as "Storage Location"
+								Expiry_Status as "Expiry Status"
+								Notes
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Consumption_Log_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Food_Item as "Food Item"
+								Consumption_Date as "Consumption Date"
+								Quantity_Consumed as "Quantity Consumed"
+								Meal_Type as "Meal Type"
+								Notes
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Food_Item as "Food Item"
+								Consumption_Date as "Consumption Date"
+								Quantity_Consumed as "Quantity Consumed"
+								Meal_Type as "Meal Type"
+								Notes
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Food_Waste_Log_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Food_Item as "Food Item"
+								Waste_Date as "Waste Date"
+								Quantity_Wasted as "Quantity Wasted"
+								Waste_Reason as "Waste Reason"
+								Estimated_Loss as "Estimated Loss"
+								Notes
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Food_Item as "Food Item"
+								Waste_Date as "Waste Date"
+								Quantity_Wasted as "Quantity Wasted"
+								Waste_Reason as "Waste Reason"
+								Estimated_Loss as "Estimated Loss"
+								Notes
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Food_Items
+				{
+					displayname = "Food_Items"
+					icon = "tech-desktop"
+					form  Food_Items
+					{
+						icon = "tech-desktop"
+					}
+					report Food_Items_Report
+					{
+						icon = "tech-desktop"
+					}
+					report Expiry_Watchlist
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Consumption_Log
+				{
+					displayname = "Consumption_Log"
+					icon = "tech-desktop"
+					form  Consumption_Log
+					{
+						icon = "tech-desktop"
+					}
+					report Consumption_Log_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Food_Waste_Log
+				{
+					displayname = "Food_Waste_Log"
+					icon = "tech-desktop"
+					form  Food_Waste_Log
+					{
+						icon = "tech-desktop"
+					}
+					report Food_Waste_Log_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section FreshCheck_Dashboard
+				{
+					displayname = "FreshCheck_Dashboard"
+					icon = "tech-desktop"
+					page FreshCheck_Dashboard
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			font = "lato"
+			color options
+			{
+				color = "11"
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Consumption_Log
+			{
+				label placement = auto
+			}
+			form Food_Items
+			{
+				label placement = auto
+			}
+			form Food_Waste_Log
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = twocolumn
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = chryslerpurple
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Consumption_Log
+			{
+				label placement = auto
+			}
+			form Food_Items
+			{
+				label placement = auto
+			}
+			form Food_Waste_Log
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = turquoise
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
